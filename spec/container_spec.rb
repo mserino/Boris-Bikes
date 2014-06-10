@@ -1,11 +1,12 @@
 require './lib/container'
 
-class ContainerHolder; include BikeContainer; end
+class Container; include BikeContainer; end
 
 describe BikeContainer do
 
 	let(:bike) { Bike.new }
-	let(:container) { ContainerHolder.new }
+	let(:container) { Container.new }
+	let(:other_container) { Container.new }
 
 	it 'can accept a bike' do
 		expect(container.bike_count).to eq 0
@@ -26,7 +27,7 @@ describe BikeContainer do
 
 	it 'cannot accept the same bike twice' do
 		container.dock(bike)
-		expect{ container.dock(bike)}.to raise_error RuntimeError
+		expect(container.dock(bike)).to eq "Cannot dock the same bike twice"
 	end
 
 	it 'should provide a list of all available bikes' do
@@ -45,6 +46,19 @@ describe BikeContainer do
 		container.dock(working_bike)
 		container.dock(broken_bike)
 		expect(container.broken_bikes).to eq [broken_bike]
+	end
+
+	it 'can release all the broken bikes' do
+		bike.break!
+		container.dock(bike)
+		container.release_broken_bikes(bike, other_container)
+		expect(other_container.broken_bikes).to eq [bike]
+	end
+
+	it 'can release all the fixed bikes' do
+		container.dock(bike)
+		container.release_fixed_bikes(bike, other_container)
+		expect(other_container.available_bikes).to eq [bike]
 	end
 
 end

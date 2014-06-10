@@ -16,11 +16,4 @@ class Garage
 			bike.fix!
 		end
 	end
-
-	def release_fixed_bikes bike, van
-		available_bikes.each do |bike|
-			release(bike)
-			van.dock(bike)
-		end
-	end
 end

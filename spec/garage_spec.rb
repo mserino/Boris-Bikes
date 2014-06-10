@@ -13,6 +13,11 @@ describe Garage do
 		expect(garage).to be_full
 	end
 
+	it 'should not accept a bike when is full' do
+		10.times { garage.dock(Bike.new)}
+		expect(garage.dock(Bike.new)).to eq "Is full!"
+	end
+
 	it 'should be able to fix a bike' do
 		bike.break!
 		station.dock(bike)
@@ -33,15 +38,5 @@ describe Garage do
 		van.release_broken_bikes(bike, garage)
 		garage.fix_broken_bikes(bike)
 		expect(garage.broken_bikes).to eq []
-	end
-
-	it 'can release fixed bikes to the van' do
-		bike.break!
-		station.dock(bike)
-		station.release_broken_bikes(bike,van)
-		van.release_broken_bikes(bike, garage)
-		garage.fix_broken_bikes(bike)
-		garage.release_fixed_bikes(bike,van)
-		expect(van.available_bikes).to eq [bike]
 	end
 end
