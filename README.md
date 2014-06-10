@@ -2,21 +2,39 @@ Boris Bikes
 ===========
 (Makers Academy)[http://www.makersacademy.com] week 3 project: Object Oriented Programming
 
-###Classes:
+##Classes:
 - Bike
 - Person
 - Docking Station
 - Van
 - Garage
 
-###Responsibilities
+### Bike
+- Can be broken
+- Can be fixed
 
-A Bike can be broken or fixed
-- A Person can rent a bike from the docking station and return it
-- The Docking Station can accept and release fixed bikes to the person, check for broken bikes, accept and release bikes to the van
-- The Van can accept broken bikes from the docking station and release it to the garage
-- The Garage can accept broken bikes from the Van, fix bikes and release fixed bikes to the Van
+### Person
+- Can rent a bike
+- Can ride a bike
+- Can casually break the bike while riding it
 
-###Technologies
+### Docking Station
+- Can release fixed bikes to the person
+- Can receive bikes from the person
+- Can release broken bikes to the van
+- Can receive fixed bikes from the van
+
+### Van
+- Can receive broken bikes from the station
+- Can release broken bikes to the garage
+- Can receive fixed bikes from the garage
+- Can release fixed bikes to the station
+
+### Garage
+- Can receive broken bikes from the van
+- Can fix broken bikes
+- Can release fixed bikes to the van
+
+##Technologies
 - Ruby
 - Rspec
