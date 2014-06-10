@@ -1,6 +1,6 @@
 Boris Bikes
 ===========
-(Makers Academy)[http://www.makersacademy.com] week 3 project: Object Oriented Programming
+[Makers Academy](http://www.makersacademy.com) week 3 project: Object Oriented Programming
 
 ##Classes:
 - Bike
