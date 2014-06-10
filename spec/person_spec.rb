@@ -32,7 +32,11 @@ describe Person do
 		expect(person.rent_bike_from(station, bike)).to eq "You cannot rent this bike, it\'s broken!!"
 	end
 
-	it 'when riding can fall down and break it'
+	it 'when riding can fall down and break it' do
+		person.rent_bike_from(station, bike)
+		expect(bike).to receive(:break!)
+		person.can_fall_down_from(bike)
+	end
 
 	it 'can return the bike to the station' do
 		person.rent_bike_from(station, bike)

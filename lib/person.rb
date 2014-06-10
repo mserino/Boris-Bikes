@@ -32,4 +32,14 @@ class Person
 		station.dock(bike)
 	end
 
+	def casual
+		[false, false, false, true].sample
+	end
+
+	def can_fall_down_from(bike)
+		if casual == true
+			bike.break!
+		end
+	end
+
 end
