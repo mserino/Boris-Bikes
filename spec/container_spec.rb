@@ -19,6 +19,16 @@ describe BikeContainer do
 		expect(container.bike_count).to eq 0
 	end
 
+	it 'should know if a bike has already been docked' do
+		container.dock(bike)
+		expect(container.already?(bike)).to be_true
+	end
+
+	it 'cannot accept the same bike twice' do
+		container.dock(bike)
+		expect{ container.dock(bike)}.to raise_error RuntimeError
+	end
+
 	it 'should provide a list of all available bikes' do
 		working_bike = Bike.new
 		broken_bike = Bike.new

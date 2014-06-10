@@ -1,7 +1,7 @@
 module BikeContainer
 
 	ALL_BROKEN_BIKES = Proc.new{|bike| bike.broken?}
-	
+
 	def bikes
 		@bikes ||= []
 	end
@@ -12,7 +12,8 @@ module BikeContainer
 
 	def dock bike
 		raise "Is full!" if full?
-		@bikes << bike
+		raise "Cannot put the same bike twice" if already? bike
+		bikes << bike
 	end
 
 	def release bike
@@ -21,6 +22,10 @@ module BikeContainer
 
 	def full?
 		bike_count == @capacity
+	end
+
+	def already? bike
+		 @bikes.include? bike
 	end
 
 	def available_bikes

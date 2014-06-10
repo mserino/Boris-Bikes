@@ -3,11 +3,11 @@ Boris Bikes
 (Makers Academy)[http://www.makersacademy.com] week 3 project: Object Oriented Programming
 
 ###Classes:
-Bike
-Person
-Docking Station
-Van
-Garage
+- Bike
+- Person
+- Docking Station
+- Van
+- Garage
 
 ###Responsibilities
 

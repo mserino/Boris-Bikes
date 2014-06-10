@@ -17,7 +17,7 @@ describe Station do
 		expect {station.dock(Bike.new)}.to raise_error(RuntimeError)
 	end
 
-	it 'should be able to release broken bikes to the van' do
+	it 'can release broken bikes to the van' do
 		bike.break!
 		station.dock(bike)
 		station.release_broken_bikes(bike, van)
